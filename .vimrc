@@ -18,12 +18,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'https://github.com/majutsushi/tagbar.git'
-Plugin 'https://github.com/Shougo/neocomplete.vim.git'
+"Plugin 'https://github.com/Shougo/neocomplete.vim.git'
 Plugin 'https://github.com/Shougo/echodoc.vim.git'
+Plugin 'Lokaltog/vim-distinguished'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'jnurmine/Zenburn'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'https://github.com/Valloric/YouCompleteMe.git'
+Plugin 'https://github.com/seebi/dircolors-solarized.git'
+Plugin 'tomasr/molokai'
 call vundle#end()
 syntax on
 filetype on
