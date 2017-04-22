@@ -23,10 +23,11 @@ Plugin 'https://github.com/Shougo/echodoc.vim.git'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'jnurmine/Zenburn'
+Plugin 'https://github.com/Valloric/YouCompleteMe.git'
 call vundle#end()
-"syntax on
-"filetype on
-"filetype plugin on
+syntax on
+filetype on
+filetype plugin on
 filetype plugin indent on
 let g:netrw_liststyle=3
 let g:netrw_browse_split=4
@@ -45,6 +46,8 @@ nmap <leader>f :find **/<C-R><C-W><CR>
 nmap [s :vimgrep <C-R><C-W> **/*.*<CR>
 nmap gc :hide<CR>
 nmap gn :let g:netrw_winsize=20 <CR> :Ve<CR> :let g:netrw_winsize=80<CR>
+nmap gN <C-W>hgcgn
+nmap g> :mksession! 1<CR>
 nmap [b :%bd\|e#<CR> 
 nmap cs' ciw'<C-R>"'<C-C>
 nmap cs" ciw"<C-R>""<C-C>
@@ -53,29 +56,23 @@ nmap cs( ciw(<C-R>")<C-C>
 nmap cs[ ciw[<C-R>"]<C-C>
 nmap cs< ciw<<C-R>"><C-C>
 nmap cs0 ciw${<C-R>"}<C-C>
+nmap <leader>d :YcmCompleter GoToDefinition<CR>
+nmap <leader>r :YcmCompleter GoToReferences<CR>
 nmap <C-N> gt
 nmap <C-P> gT
 set cmdheight=1
 set completeopt-=preview
 
-"python << EOF
-"import os
-"import sys
-"import vim
-"for s in sys.path:
-"    if os.path.isdir(s):
-"        vim.command(r'set path+=%s' %(s.replace(" ", r"\ ")))
-"EOF
 
 function Setuppython()
-python << EOF
+python3 << EOL
 import os
 import sys
 import vim
 for s in sys.path:
     if os.path.isdir(s):
         vim.command(r'set path+=%s' %(s.replace(" ", r"\ ")))
-EOF
+EOL
 set suffixesadd=.py
 endfunction
 au BufNewFile,BufRead *.py call Setuppython()
