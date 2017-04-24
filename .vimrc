@@ -45,7 +45,8 @@ let g:netrw_banner=0
 "let g:ycm_autoclose_preview_window_after_insertion=1
 nmap <C-J> :bprev <CR>
 nmap <C-K> :bnext <CR>
-nmap <C-H> <C-W>h$B"5y0y$?^\(<C-R>5\)\@!<CR><CR><CR>/<C-R>"<CR>
+nmap gh <C-W>h<C-W>h<C-W>h$B"5y0y$?^\(<C-R>5\)\@!<CR><CR><CR>/<C-R>"<CR>
+nmap <C-H> <C-W>h 
 nmap <C-L> <C-W>l
 nmap <F8> :TagbarToggle<CR>
 nmap <F7> :ls<CR>:b
