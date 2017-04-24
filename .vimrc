@@ -19,6 +19,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'https://github.com/majutsushi/tagbar.git'
 "Plugin 'https://github.com/Shougo/neocomplete.vim.git'
+Plugin 'eiginn/netrw'
 Plugin 'https://github.com/Shougo/echodoc.vim.git'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'altercation/vim-colors-solarized'
@@ -26,8 +27,8 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'jnurmine/Zenburn'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'https://github.com/Valloric/YouCompleteMe.git'
-Plugin 'https://github.com/seebi/dircolors-solarized.git'
-Plugin 'tomasr/molokai'
+"Plugin 'https://github.com/seebi/dircolors-solarized.git'
+"Plugin 'tomasr/molokai'
 call vundle#end()
 syntax on
 filetype on
@@ -35,20 +36,23 @@ filetype plugin on
 filetype plugin indent on
 let g:netrw_liststyle=3
 let g:netrw_browse_split=4
+let g:netrw_list_hide='.*\.pyc$,.*\.swp$'
+let g:netrw_keepdir=0
 let g:netrw_altv=1
 let g:netrw_winsize=80
 let g:netrw_banner=0
-let g:neocomplete#enable_at_startup = 1
+"let g:ycm_add_preview_to_completeopt=1
+"let g:ycm_autoclose_preview_window_after_insertion=1
 nmap <C-J> :bprev <CR>
 nmap <C-K> :bnext <CR>
-nmap <C-H> <C-W>h
+nmap <C-H> <C-W>h$B"5y0y$?^\(<C-R>5\)\@!<CR><CR><CR>/<C-R>"<CR>
 nmap <C-L> <C-W>l
 nmap <F8> :TagbarToggle<CR>
 nmap <F7> :ls<CR>:b
 nmap [f :find **/<C-R><C-f><CR>
 nmap <leader>f :find **/<C-R><C-W><CR>
 nmap [s :vimgrep <C-R><C-W> **/*.*<CR>
-nmap gc :hide<CR>
+nmap gc :q<CR>
 nmap gn :let g:netrw_winsize=20 <CR> :Ve<CR> :let g:netrw_winsize=80<CR>
 nmap gN <C-W>hgcgn
 nmap g> :mksession! 1<CR>
@@ -64,10 +68,10 @@ nmap <leader>d :YcmCompleter GoToDefinition<CR>
 nmap <leader>r :YcmCompleter GoToReferences<CR>
 nmap <C-N> gt
 nmap <C-P> gT
-set cmdheight=1
 set completeopt-=preview
-
-
+set autochdir
+set cmdheight=1
+"let g:echodoc_enable_at_startup=1
 function Setuppython()
 python3 << EOL
 import os
