@@ -47,6 +47,7 @@ let g:netrw_banner=0
 nmap <C-J> :bprev <CR>
 nmap <C-K> :bnext <CR>
 nmap gh <C-W>h<C-W>h<C-W>h$B"5y0"zy$?^\(<C-R>5\)\@!<CR><CR><CR>/<C-R>z<CR>
+nmap gb <C-^>:bd#<CR>
 nmap <C-H> <C-W>h 
 nmap <C-L> <C-W>l
 nmap <F8> :TagbarToggle<CR>
@@ -73,6 +74,7 @@ nmap <C-N> gt
 nmap <C-P> gT
 set completeopt-=preview
 set cmdheight=1
+set tags+=./tags
 "let g:echodoc_enable_at_startup=1
 function Setuppython()
 python3 << EOL
@@ -86,3 +88,9 @@ EOL
 set suffixesadd=.py
 endfunction
 au BufNewFile,BufRead *.py call Setuppython()
+function Settags()
+    let curdir=getcwd()
+    execute "set tags+=" . getcwd() . "/tags"
+endfunction
+
+au VimEnter * call Settags()
