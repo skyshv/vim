@@ -26,6 +26,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'jnurmine/Zenburn'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'https://github.com/Valloric/YouCompleteMe.git'
+Plugin 'mkitt/tabline.vim'
 "Plugin 'https://github.com/seebi/dircolors-solarized.git'
 "Plugin 'tomasr/molokai'
 call vundle#end()
@@ -36,7 +37,7 @@ filetype plugin indent on
 color PaperColor
 let g:netrw_liststyle=3
 let g:netrw_browse_split=4
-let g:netrw_list_hide='.*\.pyc$,.*\.swp$'
+let g:netrw_list_hide='.*\.pyc$,.*\.swp$,^\..*'
 let g:netrw_keepdir=0
 let g:netrw_altv=1
 let g:netrw_winsize=80
@@ -50,8 +51,9 @@ nmap <C-H> <C-W>h
 nmap <C-L> <C-W>l
 nmap <F8> :TagbarToggle<CR>
 nmap <F7> :ls<CR>:b
+nmap gx :vs<CR><C-W>T
 nmap [f :find **/<C-R><C-f><CR>
-nmap <leader>f :find **/<C-R><C-W><CR>
+nmap <leader>f :find **/<cfile>:t<CR>
 nmap [s :vimgrep <C-R><C-W> **/*.*<CR>
 nmap gc :q<CR>
 nmap gn :let g:netrw_winsize=20 <CR> :Ve<CR> :let g:netrw_winsize=80<CR>
@@ -70,7 +72,6 @@ nmap <leader>r :YcmCompleter GoToReferences<CR>
 nmap <C-N> gt
 nmap <C-P> gT
 set completeopt-=preview
-set autochdir
 set cmdheight=1
 "let g:echodoc_enable_at_startup=1
 function Setuppython()
