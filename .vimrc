@@ -53,8 +53,8 @@ nmap <C-L> <C-W>l
 nmap <F8> :TagbarToggle<CR>
 nmap <F7> :ls<CR>:b
 nmap gx :vs<CR><C-W>T
-nmap [f :find **/<C-R><C-f><CR>
-nmap <leader>f :find **/<cfile>:t<CR>
+nmap [f :1find :execute "lcd" .g:mycurdir<CR>:find **/<cfile>:t<CR>
+nmap <leader>f :execute "lcd" .g:mycurdir<CR>:find **/<cfile>:t<CR>
 nmap [s :vimgrep <C-R><C-W> **/*.*<CR>
 nmap gc :q<CR>
 nmap gn :let g:netrw_winsize=20 <CR> :Ve<CR> :let g:netrw_winsize=80<CR>
@@ -89,8 +89,9 @@ set suffixesadd=.py
 endfunction
 au BufNewFile,BufRead *.py call Setuppython()
 function Settags()
-    let curdir=getcwd()
+    let g:mycurdir=getcwd()
     execute "set tags+=" . getcwd() . "/tags"
+    execute "set path+=" . getcwd()
 endfunction
 
 au VimEnter * call Settags()
