@@ -27,6 +27,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'https://github.com/Valloric/YouCompleteMe.git'
 Plugin 'mkitt/tabline.vim'
+Plugin 'vim-syntastic/syntastic'
 "Plugin 'https://github.com/seebi/dircolors-solarized.git'
 "Plugin 'tomasr/molokai'
 call vundle#end()
@@ -95,3 +96,11 @@ function Settags()
 endfunction
 
 au VimEnter * call Settags()
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
